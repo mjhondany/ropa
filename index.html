@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ropa de Salud - Uniformes y Ropa Clínica</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Estilos de AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Pantalla de Carga / Loader Estilo Átomo con la Tierra Realista en el Núcleo -->
+    <div id="page-loader" class="loader-overlay">
+        <div class="atomic-loader-wrapper">
+            <div class="atomic-atom">
+                <!-- Órbitas de electrones -->
+                <div class="electron-orbit orbit-1">
+                    <div class="electron-dot"></div>
+                </div>
+                <div class="electron-orbit orbit-2">
+                    <div class="electron-dot"></div>
+                </div>
+                <div class="electron-orbit orbit-3">
+                    <div class="electron-dot"></div>
+                </div>
+                
+                <!-- Núcleo convertido en el Planeta Tierra Súper Realista -->
+                <div class="nucleus-core earth-realistic">
+                    <div class="earth-texture"></div>
+                    <div class="earth-clouds"></div>
+                    <div class="earth-atmosphere"></div>
+                    <div class="earth-specular"></div>
+                </div>
+            </div>
+            <p class="atomic-text">Cargando Ropa de Salud...</p>
+        </div>
+    </div>
+
+    <!-- Aviso Superior -->
+    <div class="top-banner">
+        ¡ENVÍOS A TODO EL PERÚ! 🇵🇪 • PAGOS POR YAPE, PLIN Y TRANSFERENCIA
+    </div>
+
+    <!-- Cabecera -->
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="img/cc.jpg" alt="Logotipo Ropa de Salud" class="logo-img">
+            </a>
+        </div>
+
+        <!-- Barra de búsqueda estilo Falabella -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar prendas de salud..." onkeyup="filtrarYRenderizar()">
+            <button class="search-btn-icon" onclick="filtrarYRenderizar()">
+                🔍
+            </button>
+        </div>
+
+        <button class="cart-btn" onclick="toggleCart()">🛒 Carrito (<span id="cart-count">0</span>)</button>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="hero" data-aos="fade-in" data-aos-duration="1000">
+        <h1>Ropa y Uniformes de Salud</h1>
+        <p>Confort, calidad y elegancia para el personal médico</p>
+    </section>
+
+    <!-- Barra de Beneficios -->
+    <section class="features-bar" data-aos="fade-up" data-aos-duration="800">
+        <div class="feature-item">
+            <h4>📦 Envíos a todo el Perú</h4>
+            <p>Vía Olva Courier o Shalom</p>
+        </div>
+        <div class="feature-item">
+            <h4>💯 Telas Antifluido</h4>
+            <p>Máxima durabilidad y confort</p>
+        </div>
+        <div class="feature-item">
+            <h4>📱 Pagos Seguros</h4>
+            <p>Yape, Plin y Transferencia</p>
+        </div>
+    </section>
+
+    <!-- Contenedor Principal con Sidebar de Filtros y Catálogo -->
+    <div class="shop-layout container">
+        
+        <!-- BARRA LATERAL DE FILTROS -->
+        <aside class="filters-sidebar" data-aos="fade-right" data-aos-duration="800">
+            <h3>Filtros de Búsqueda</h3>
+
+            <!-- Categorías -->
+            <div class="filter-group">
+                <h4>Categorías</h4>
+                <ul class="filter-list" id="filter-categorias">
+                    <li><label><input type="checkbox" value="todos" checked onchange="filtrarYRenderizar()"> Todos</label></li>
+                    <li><label><input type="checkbox" value="polos" onchange="filtrarYRenderizar()"> Ambos Quirúrgicos</label></li>
+                    <li><label><input type="checkbox" value="camisas" onchange="filtrarYRenderizar()"> Mandiles y Chaquetas</label></li>
+                    <li><label><input type="checkbox" value="casacas" onchange="filtrarYRenderizar()"> Pantalones Clínicos</label></li>
+                </ul>
+            </div>
+
+            <!-- Marcas / Líneas -->
+            <div class="filter-group">
+                <h4>Línea</h4>
+                <ul class="filter-list" id="filter-marcas">
+                    <li><label><input type="checkbox" value="Tommy Hilfiger" onchange="filtrarYRenderizar()"> Línea Classic</label></li>
+                    <li><label><input type="checkbox" value="Nautica" onchange="filtrarYRenderizar()"> Línea Stretch</label></li>
+                    <li><label><input type="checkbox" value="Calvin Klein" onchange="filtrarYRenderizar()"> Línea Premium</label></li>
+                </ul>
+            </div>
+
+            <!-- Tallas -->
+            <div class="filter-group">
+                <h4>Talla</h4>
+                <ul class="filter-list" id="filter-tallas">
+                    <li><label><input type="checkbox" value="S" onchange="filtrarYRenderizar()"> S</label></li>
+                    <li><label><input type="checkbox" value="M" onchange="filtrarYRenderizar()"> M</label></li>
+                    <li><label><input type="checkbox" value="L" onchange="filtrarYRenderizar()"> L</label></li>
+                    <li><label><input type="checkbox" value="XL" onchange="filtrarYRenderizar()"> XL</label></li>
+                </ul>
+            </div>
+
+            <button class="reset-filters-btn" onclick="resetFiltros()">Limpiar Filtros</button>
+        </aside>
+
+        <!-- SECCIÓN DE PRODUCTOS -->
+        <main class="catalog-main" data-aos="fade-left" data-aos-duration="800">
+            <h2 class="section-title" id="titulo-categoria">Catálogo General</h2>
+            <div class="product-grid" id="product-grid">
+                <!-- Productos inyectados por JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Sección de Preguntas Frecuentes -->
+    <section class="faq-section" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <h3>¿Cómo realizo el pago?</h3>
+                    <p>Aceptamos pagos directos mediante <strong>Yape, Plin y transferencias bancarias</strong> (BCP, Interbank, BBVA). Al finalizar tu pedido por la web, se abrirá tu WhatsApp con el resumen para enviarte los números de cuenta y que adjuntes tu voucher.</p>
+                </div>
+                <div class="faq-card">
+                    <h3>¿Hacen envíos a todo el Perú?</h3>
+                    <p>Sí, realizamos envíos seguros a Lima Metropolitana y a todas las provincias del país mediante agencias de confianza como <strong>Olva Courier</strong> (a domicilio) o <strong>Shalom</strong> (recojo en agencia).</p>
+                </div>
+                <div class="faq-card">
+                    <h3>¿Qué tipo de tela utilizamos?</h3>
+                    <p>Trabajamos con textiles especializados para el sector salud, garantizando frescura, resistencia a fluidos y fácil lavado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2026 Ropa de Salud Perú • Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/51978225778?text=Hola,%20tengo%20una%20consulta%20sobre%20la%20ropa%20de%20salud%20de%20la%20web" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <!-- Fondo Oscuro Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+    <!-- Menú Lateral del Carrito -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Tu Carrito y Envío</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cartItemsContainer">
+            <p style="color: #777; text-align: center; margin-top: 10px;">Tu carrito está vacío</p>
+        </div>
+
+        <!-- Formulario de datos para el envío -->
+        <div class="checkout-form">
+            <h4>Datos de Envío (Perú)</h4>
+            <div class="form-group">
+                <label>Nombre y Apellido:</label>
+                <input type="text" id="nombreCliente" placeholder="Ej. Dr. Juan Pérez">
+            </div>
+            <div class="form-group">
+                <label>Teléfono / Celular:</label>
+                <input type="text" id="telefonoCliente" placeholder="Ej. 999888777">
+            </div>
+            <div class="form-group">
+                <label>Ciudad / Departamento:</label>
+                <input type="text" id="ciudadCliente" placeholder="Ej. Lima / Arequipa / Piura">
+            </div>
+            <div class="form-group">
+                <label>Dirección exacta / Agencia:</label>
+                <input type="text" id="direccionCliente" placeholder="Ej. Clínica o Agencia Shalom">
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total a pagar:</span>
+                <span id="cartTotalText">S/. 0.00</span>
+            </div>
+            <button class="checkout-whatsapp" onclick="finalizarCompraWhatsApp()">Confirmar y Pedir por WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- Script de AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
