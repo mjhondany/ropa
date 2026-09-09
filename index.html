@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedStyle Perú • Uniformes y Ropa Clínica de Alta Gama</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Estilos de AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Pantalla de Carga / Loader Atómico 3D con la Tierra Realista -->
+    <div id="page-loader" class="loader-overlay">
+        <div class="atomic-loader-wrapper">
+            <div class="atomic-atom">
+                <div class="electron-orbit orbit-1">
+                    <div class="electron-dot"></div>
+                </div>
+                <div class="electron-orbit orbit-2">
+                    <div class="electron-dot"></div>
+                </div>
+                <div class="electron-orbit orbit-3">
+                    <div class="electron-dot"></div>
+                </div>
+                <div class="nucleus-core earth-realistic">
+                    <div class="earth-texture"></div>
+                    <div class="earth-clouds"></div>
+                    <div class="earth-atmosphere"></div>
+                    <div class="earth-specular"></div>
+                </div>
+            </div>
+            <p class="atomic-text">Cargando Experiencia MedStyle...</p>
+        </div>
+    </div>
+
+    <!-- Aviso Superior Institucional -->
+    <div class="top-banner">
+        <span>✨ ENVÍOS EXPRÉS A TODO EL PERÚ 🇵🇪 • PAGOS SEGUROS VÍA YAPE, PLIN Y TRANSFERENCIA</span>
+    </div>
+
+    <!-- Cabecera Profesional (Sticky Header) -->
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="img/cc.jpg" alt="MedStyle Perú Logotipo" class="logo-img">
+            </a>
+        </div>
+
+        <!-- Barra de búsqueda estilo retail moderno -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar ambos, mandiles, pantalones..." onkeyup="filtrarYRenderizar()">
+            <button class="search-btn-icon" onclick="filtrarYRenderizar()">
+                🔍
+            </button>
+        </div>
+
+        <button class="cart-btn" onclick="toggleCart()">
+            <span class="cart-icon">🛒</span> Mi Bolsa (<span id="cart-count">0</span>)
+        </button>
+    </header>
+
+    <!-- Slider Principal de Fotos (Hero Carrusel) -->
+    <section class="hero-slider" data-aos="fade-in" data-aos-duration="1000">
+        <div class="slider-container" id="sliderContainer">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('img/polo1.jpg')">
+                <div class="slide-content">
+                    <span class="slide-badge">Nueva Colección 2026</span>
+                    <h1>Uniformes Clínicos de Alta Gama</h1>
+                    <p>Confort superior, diseño ergonómico y tecnología antifluido para profesionales exigentes.</p>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('img/polo2.jpg')">
+                <div class="slide-content">
+                    <span class="slide-badge">Línea Stretch Shield</span>
+                    <h1>Ambos Quirúrgicos Premium</h1>
+                    <p>Máxima movilidad y elegancia institucional en cada guardia hospitalaria.</p>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('img/pan1.jpg')">
+                <div class="slide-content">
+                    <span class="slide-badge">Indumentaria Especializada</span>
+                    <h1>Pantalones Clínicos Ergonómicos</h1>
+                    <p>Resistencia insuperable y frescura duradera para largas jornadas de trabajo.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Controles manuales del slider -->
+        <button class="slider-btn prev-btn" onclick="cambiarSlide(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="cambiarSlide(1)">&#10095;</button>
+    </section>
+
+    <!-- Barra de Beneficios Exclusivos -->
+    <section class="features-bar" data-aos="fade-up" data-aos-duration="800">
+        <div class="feature-item">
+            <div class="feature-icon">📦</div>
+            <div>
+                <h4>Envíos a Nivel Nacional</h4>
+                <p>Despachos seguros vía Olva Courier y Shalom</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🛡️</div>
+            <div>
+                <h4>Tecnología Antifluido</h4>
+                <p>Textiles inteligentes de fácil lavado y alta durabilidad</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💬</div>
+            <div>
+                <h4>Atención Personalizada</h4>
+                <p>Asesoría directa por WhatsApp corporativo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenedor Principal (Sidebar de Filtros + Catálogo de Productos) -->
+    <div class="shop-layout container">
+        
+        <!-- BARRA LATERAL DE FILTROS -->
+        <aside class="filters-sidebar" data-aos="fade-right" data-aos-duration="800">
+            <h3>Filtrar Catálogo</h3>
+
+            <!-- Categorías -->
+            <div class="filter-group">
+                <h4>Categorías</h4>
+                <ul class="filter-list" id="filter-categorias">
+                    <li><label><input type="checkbox" value="todos" checked onchange="filtrarYRenderizar()"> Todos los productos</label></li>
+                    <li><label><input type="checkbox" value="ambos" onchange="filtrarYRenderizar()"> Ambos Quirúrgicos</label></li>
+                    <li><label><input type="checkbox" value="pantalones" onchange="filtrarYRenderizar()"> Pantalones Clínicos</label></li>
+                </ul>
+            </div>
+
+            <!-- Líneas -->
+            <div class="filter-group">
+                <h4>Línea Textil</h4>
+                <ul class="filter-list" id="filter-marcas">
+                    <li><label><input type="checkbox" value="Clínica Pro" onchange="filtrarYRenderizar()"> Línea Clínica Pro</label></li>
+                    <li><label><input type="checkbox" value="Stretch Shield" onchange="filtrarYRenderizar()"> Línea Stretch Shield</label></li>
+                </ul>
+            </div>
+
+            <!-- Tallas -->
+            <div class="filter-group">
+                <h4>Selección de Talla</h4>
+                <ul class="filter-list" id="filter-tallas">
+                    <li><label><input type="checkbox" value="XS" onchange="filtrarYRenderizar()"> XS</label></li>
+                    <li><label><input type="checkbox" value="S" onchange="filtrarYRenderizar()"> S</label></li>
+                    <li><label><input type="checkbox" value="M" onchange="filtrarYRenderizar()"> M</label></li>
+                    <li><label><input type="checkbox" value="L" onchange="filtrarYRenderizar()"> L</label></li>
+                    <li><label><input type="checkbox" value="XL" onchange="filtrarYRenderizar()"> XL</label></li>
+                </ul>
+            </div>
+
+            <button class="reset-filters-btn" onclick="resetFiltros()">Restablecer Filtros</button>
+        </aside>
+
+        <!-- SECCIÓN DE PRODUCTOS -->
+        <main class="catalog-main" data-aos="fade-left" data-aos-duration="800">
+            <div class="catalog-header-bar">
+                <h2 class="section-title" id="titulo-categoria">Catálogo General</h2>
+                <span class="catalog-subtitle">Indumentaria clínica certificada</span>
+            </div>
+            <div class="product-grid" id="product-grid">
+                <!-- Productos inyectados dinámicamente por JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Sección de Preguntas Frecuentes Institucionales -->
+    <section class="faq-section" data-aos="fade-up" data-aos-duration="800">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 class="section-title" style="display: inline-block;">Preguntas Frecuentes</h2>
+                <p style="color: #64748b; font-size: 14px; margin-top: 5px;">Todo lo que necesitas saber sobre tus compras institucionales y envíos</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <h3>💳 ¿Cómo realizo mis pagos?</h3>
+                    <p>Aceptamos pagos directos mediante <strong>Yape, Plin y transferencias bancarias</strong> en nuestras cuentas BCP, Interbank y BBVA. Al finalizar tu pedido, el sistema abrirá tu WhatsApp con el detalle para enviarte los datos y adjuntar tu comprobante.</p>
+                </div>
+                <div class="faq-card">
+                    <h3>🚚 ¿Realizan envíos a provincias?</h3>
+                    <p>Sí, despachamos diariamente de forma segura a Lima Metropolitana y a todo el Perú a través de agencias aliadas de confianza como <strong>Olva Courier</strong> (envío a domicilio) y <strong>Shalom</strong> (recojo en agencia).</p>
+                </div>
+                <div class="faq-card">
+                    <h3>🔬 ¿Qué propiedades tienen las telas?</h3>
+                    <p>Nuestras prendas están confeccionadas con mezclas textiles de alta ingeniería clínica: tecnología antifluido de alta resistencia, tejido stretch bidireccional y acabados antiarrugas de fácil mantenimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página Institucional -->
+    <footer>
+        <div class="container footer-content">
+            <p>© 2026 MedStyle Perú • Indumentaria y Uniformes Clínicos de Alta Gama. Todos los derechos reservados.</p>
+            <p style="font-size: 12px; color: #94a3b8; margin-top: 5px;">Diseñado para profesionales de la salud que exigen excelencia.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp Corporativo -->
+    <a href="https://wa.me/51978225778?text=Hola,%20deseo%20asesoría%20sobre%20los%20uniformes%20clínicos%20de%20la%20web" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <!-- Fondo Oscuro Overlay para el Carrito -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+    <!-- Menú Lateral del Carrito (Bolsa de Compras Rediseñada y Profesional) -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <div class="cart-title-wrapper">
+                <span class="cart-bag-icon">🛍️</span>
+                <h3>Tu Bolsa de Compras</h3>
+            </div>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+
+        <div class="cart-body-content">
+            <!-- Lista de Artículos -->
+            <div class="cart-items" id="cartItemsContainer">
+                <div class="empty-cart-state">
+                    <span class="empty-cart-emoji">🛒</span>
+                    <p>Tu bolsa está vacía</p>
+                    <small>Explora nuestro catálogo y añade tus prendas clínicas.</small>
+                </div>
+            </div>
+
+            <!-- Formulario de Envío Profesional -->
+            <div class="checkout-form">
+                <div class="form-section-title">
+                    <span>📍</span> Datos de Envío y Facturación
+                </div>
+                <div class="form-group">
+                    <label>Nombre y Apellido / Doctor(a):</label>
+                    <input type="text" id="nombreCliente" placeholder="Ej. Dr. Carlos Mendoza">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono de Contacto:</label>
+                    <input type="text" id="telefonoCliente" placeholder="Ej. 999888777">
+                </div>
+                <div class="form-group">
+                    <label>Ciudad / Departamento:</label>
+                    <input type="text" id="ciudadCliente" placeholder="Ej. Lima / Trujillo / Arequipa">
+                </div>
+                <div class="form-group">
+                    <label>Dirección exacta o Agencia:</label>
+                    <input type="text" id="direccionCliente" placeholder="Ej. Clínica San Borja o Agencia Shalom">
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total-box">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotalText">S/. 0.00</span>
+                </div>
+                <div class="total-row grand-total">
+                    <span>Total estimado:</span>
+                    <span id="cartTotalText">S/. 0.00</span>
+                </div>
+            </div>
+            <button class="checkout-whatsapp" onclick="finalizarCompraWhatsApp()">
+                <span>💬</span> Confirmar Pedido por WhatsApp
+            </button>
+            <div class="secure-checkout-badge">
+                🔒 Pagos seguros por Yape, Plin y Transferencia
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

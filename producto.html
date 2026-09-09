@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto • MedStyle Perú</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Aviso Superior Institucional -->
+    <div class="top-banner">
+        <span>✨ ENVÍOS EXPRÉS A TODO EL PERÚ 🇵🇪 • PAGOS SEGUROS VÍA YAPE, PLIN Y TRANSFERENCIA</span>
+    </div>
+
+    <!-- Cabecera Profesional -->
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="img/cc.jpg" alt="MedStyle Perú Logotipo" class="logo-img">
+            </a>
+        </div>
+        <button class="cart-btn" onclick="toggleCart()">
+            <span class="cart-icon">🛒</span> Mi Bolsa (<span id="cart-count">0</span>)
+        </button>
+    </header>
+
+    <!-- Contenedor de Detalle de Producto -->
+    <main class="container product-detail-main">
+        <div class="back-catalog">
+            <a href="index.html">← Volver al Catálogo General</a>
+        </div>
+
+        <div class="product-detail-grid" id="productDetailContainer">
+            <!-- Inyectado dinámicamente por JavaScript -->
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container footer-content">
+            <p>© 2026 MedStyle Perú • Indumentaria y Uniformes Clínicos de Alta Gama. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/51978225778?text=Hola,%20deseo%20asesoría%20sobre%20un%20producto%20de%20la%20web" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <!-- Overlay y Carrito Lateral -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <div class="cart-title-wrapper">
+                <span class="cart-bag-icon">🛍️</span>
+                <h3>Tu Bolsa de Compras</h3>
+            </div>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+
+        <div class="cart-body-content">
+            <div class="cart-items" id="cartItemsContainer">
+                <div class="empty-cart-state">
+                    <span class="empty-cart-emoji">🛒</span>
+                    <p>Tu bolsa está vacía</p>
+                </div>
+            </div>
+
+            <div class="checkout-form">
+                <div class="form-section-title">
+                    <span>📍</span> Datos de Envío y Facturación
+                </div>
+                <div class="form-group">
+                    <label>Nombre y Apellido / Doctor(a):</label>
+                    <input type="text" id="nombreCliente" placeholder="Ej. Dr. Carlos Mendoza">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono de Contacto:</label>
+                    <input type="text" id="telefonoCliente" placeholder="Ej. 999888777">
+                </div>
+                <div class="form-group">
+                    <label>Ciudad / Departamento:</label>
+                    <input type="text" id="ciudadCliente" placeholder="Ej. Lima / Trujillo / Arequipa">
+                </div>
+                <div class="form-group">
+                    <label>Dirección exacta o Agencia:</label>
+                    <input type="text" id="direccionCliente" placeholder="Ej. Clínica San Borja o Agencia Shalom">
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total-box">
+                <div class="total-row grand-total">
+                    <span>Total estimado:</span>
+                    <span id="cartTotalText">S/. 0.00</span>
+                </div>
+            </div>
+            <button class="checkout-whatsapp" onclick="finalizarCompraWhatsApp()">
+                <span>💬</span> Confirmar Pedido por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
