@@ -429,7 +429,7 @@ function finalizarCompraWhatsApp() {
     mensaje += `\n💰 *Total Estimado:* S/. ${total.toFixed(2)}\n`;
     mensaje += `💳 *Método de pago:* Yape / Plin / Transferencia.\n\nPor favor envíeme los números de cuenta institucionales para realizar el pago y adjuntar mi comprobante.`;
 
-    let numeroWhatsApp = "51978225778"; 
+    let numeroWhatsApp = "5199999999"; 
     let url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
     window.open(url, '_blank');
